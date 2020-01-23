@@ -15,18 +15,14 @@ use pocketmine\command\ConsoleCommandSender;
 
 class Main extends PluginBase implements Listener{
   
-	public $prefix = "§9§lguncrafter§8§l»§r §7";
+	public $prefix = "Â§9Â§lguncrafterÂ§8Â§lÂ»Â§r Â§7";
   
 public function onEnale(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
 }
 
-public function onPlayerTouch(PlayerInteractEvent $event){
-     $player = $event->getPlayer();
-     $b = $event->getBlock();
-     $name = $event->getPlayer()->getName();
-     $name = strtolower($name);
-     if ($b->getID() === 245) {
+public function onInteract(PlayerInteractEvent $event) {
+    if($event->getBlock()->getId() == 63 || $event->getBlock()->getId() == 68) {
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
 			$result = $data;
@@ -35,7 +31,7 @@ public function onPlayerTouch(PlayerInteractEvent $event){
 			}
 			switch($result){
 			    case 0:
-                            $sender->sendMessage("§3trail ui closed");
+                            $sender->sendMessage("Â§3trail ui closed");
                             case 1:
                             if (!($sender instanceof Player)) return true;
                             $this->getServer()->dispatchCommand(new ConsoleCommandSender(), "particlechase remove {$sender->getName()}");
@@ -87,7 +83,7 @@ public function onPlayerTouch(PlayerInteractEvent $event){
                         }
 		});
                 $form->setTitle("particle ui");
-                $form->addButton("§3close");
+                $form->addButton("Â§3close");
                 $form->addButton("remove trail");
                 $form->addbutton("flame");
                 $form->addbutton("redstone");
