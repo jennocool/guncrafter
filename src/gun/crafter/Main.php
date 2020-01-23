@@ -22,7 +22,7 @@ public function onEnale(){
 }
 
 public function onInteract(PlayerInteractEvent $event) {
-    if($event->getBlock()->getId() == 63 || $event->getBlock()->getId() == 68) {
+    if($event->getBlock()->getId() == 245 || $event->getBlock()->getId() == 245) {
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$form = $api->createSimpleForm(function (Player $sender, int $data = null){
 			$result = $data;
