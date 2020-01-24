@@ -96,7 +96,7 @@ public function onInteract(PlayerInteractEvent $event) {
                 $form->addbutton("water");
                 $form->addbutton("water 2");
                 $form->addbutton("smoke");
-		$form->sendToPlayer($player);
+		$player->sendForm($form);
      }
  }
 }
